@@ -1,38 +1,94 @@
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  padding: 20px;
+  color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.vehicle-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.vehicle-table th, .vehicle-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.vehicle-table th {
+  background-color: #f2f2f2;
+}
+
+.vehicle-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.vehicle-table tbody tr:hover {
+  background-color: #e6f7ff;
+}
+
+.vehicles-container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f9f9f9; /* Match the table even row background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.search-bar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  padding: 10px 15px;
+  background-color: #f2f2f2; /* Match the table header background color */
+  color: #282c34; /* Match the table border color */
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d9d9d9; /* Darken the button color on hover */
+}
+
+span {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .vehicles-container {
+      width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+
+  input[type="text"] {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
   }
 }

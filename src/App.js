@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { GetDatasetIdRequest } from './services/datasetService';
+import Vehicles from './components/vehicles';
 import './App.css';
 
 function App() {
+  const [dataset, setDataset] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    GetDatasetIdRequest()
+      .then((result) => {
+        setDataset(result.datasetId);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching dataset ID:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {dataset && <Vehicles datasetId={dataset} />}
+        </>
+      )}
     </div>
   );
 }
